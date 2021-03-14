@@ -1,0 +1,2 @@
+# bookshopInventory
+simple java project
