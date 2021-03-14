@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="226" pageHeight="651" columnWidth="186" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bbcd6e28-bd28-4e57-bf5b-ab30e698f4d1">
+	<property name="ireport.zoom" value="2.5937424601000028"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<parameter name="invo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     sales_product.`id` AS sales_product_id,
+     sales_product.`sales_id` AS sales_product_sales_id,
+     sales_product.`bname` AS sales_product_bname,
+     sales_product.`price` AS sales_product_price,
+     sales_product.`qty` AS sales_product_qty,
+     sales_product.`total` AS sales_product_total,
+     sales.`id` AS sales_id,
+     sales.`subtotal` AS sales_subtotal,
+     sales.`pay` AS sales_pay,
+     sales.`bal` AS sales_bal
+FROM
+     `sales_product` sales_product INNER JOIN `sales` sales ON sales_product.`sales_id` = sales.`id`
+WHERE
+     sales.`id` = $P{invo}]]>
+	</queryString>
+	<field name="sales_product_id" class="java.lang.Integer"/>
+	<field name="sales_product_sales_id" class="java.lang.Integer"/>
+	<field name="sales_product_bname" class="java.lang.String"/>
+	<field name="sales_product_price" class="java.lang.Integer"/>
+	<field name="sales_product_qty" class="java.lang.Integer"/>
+	<field name="sales_product_total" class="java.lang.Integer"/>
+	<field name="sales_id" class="java.lang.Integer"/>
+	<field name="sales_subtotal" class="java.lang.Integer"/>
+	<field name="sales_pay" class="java.lang.Integer"/>
+	<field name="sales_bal" class="java.lang.Integer"/>
+	<group name="sales">
+		<groupFooter>
+			<band height="66">
+				<textField>
+					<reportElement x="144" y="0" width="41" height="14" uuid="25581d75-5908-4d72-a585-20c55cf768dd"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sales_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="144" y="18" width="42" height="11" uuid="c117f69b-164d-4f70-b868-c3f0614d31af"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sales_pay}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="144" y="33" width="41" height="16" uuid="ce14f18b-8a87-4216-b0f7-e95ff88d9f4e"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sales_bal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="102" y="0" width="36" height="15" uuid="9c52ffa4-2198-4c4f-8cfa-78b2d2cb119e"/>
+					<textElement textAlignment="Justified">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="102" y="18" width="36" height="15" uuid="399fa3e5-4366-4f78-9cf8-e2e6efc6ca7d"/>
+					<textElement textAlignment="Justified">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Pay]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="102" y="34" width="36" height="15" uuid="b3bcea94-87ac-47d3-aa2e-52e46394eeb0"/>
+					<textElement textAlignment="Justified">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Balance]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="63" y="55" width="73" height="11" uuid="93d3cc5d-4d2f-4de2-8447-d19b9535e88d"/>
+					<textElement>
+						<font size="5" isBold="true" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Thank You Come Again]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="63" y="35" width="71" height="20" uuid="a1a08b3b-8816-4fb7-95fd-628974eaf9c9"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BookShop]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="70" width="47" height="12" uuid="7aefb219-54f4-4d7e-9d1e-c3997d9dec88"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoice No]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="63" y="70" width="26" height="12" uuid="420a2c86-2bb1-42a9-bb5f-41099701c357"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="47" height="12" uuid="b0fb7ffc-55d1-4d4c-8c37-d031643bc08f"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BookName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="0" width="42" height="12" uuid="0344ba96-fdfc-4962-b3d1-2c3344b2e6f5"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="0" width="42" height="12" uuid="66381637-fa17-423a-9f86-faa39a94e6de"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="0" width="42" height="12" uuid="98711972-9a34-43ac-bf07-4c8dcf231221"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="47" height="15" uuid="06916168-dbc3-4611-807e-338312d29cd8"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_product_bname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="63" y="0" width="26" height="15" uuid="50f290df-8f55-4cf8-ae42-153f0f7e6acd"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_product_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="105" y="0" width="29" height="15" uuid="4b0d3071-9627-49f3-9900-486d46bc2fde"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_product_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="144" y="0" width="42" height="15" uuid="38bd66cc-6c3a-4f9d-998f-f05209fdd707"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_product_total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="15" width="186" height="1" uuid="28cc759b-f2bd-40cd-acac-ee06c1c545c2"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
